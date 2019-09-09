@@ -10,7 +10,7 @@ final class ListValidatorTest extends TestCase {
 	/** @var ListValidator */
 	public $validator;
 	protected function setUp(): void{
-		$this->list = [
+		$this->data = [
 			"MY_VAR" => "hello, world",
 			"MY_INT" => 12,
 			"MY_FLOAT" => 15.7,
@@ -19,7 +19,7 @@ final class ListValidatorTest extends TestCase {
 			"MY_LIST" => "a,b,c,d"
 		];
 
-		$this->validator = new ListValidator($list);
+		$this->validator = new ListValidator($this->data);
 	}
 
 	public function testCanBeCreated(): void{
