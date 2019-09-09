@@ -11,7 +11,7 @@ before_script:
 
 .test: &test
   script:
-    - phpdbg -qrr vendor/bin/phpunit --bootstrap vendor/autoload.php --coverage-text --colors=never --whitelist src/ tests/
+    - phpdbg -qrr vendor/bin/phpunit --bootstrap vendor/autoload.php --coverage-text --colors=never --whitelist src/ tests
   stage: test
   allow_failure: true
 
