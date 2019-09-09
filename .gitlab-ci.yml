@@ -15,18 +15,6 @@ before_script:
   stage: test
   allow_failure: true
 
-test:php5.6:
-  image: php:5.6
-  <<: *test
-
-test:php7.0:
-  image: php:7.0
-  <<: *test
-
-test:php7.1:
-  image: php:7.1
-  <<: *test
-
 test:php7.2:
   image: php:7.2
   <<: *test
