@@ -13,7 +13,6 @@ before_script:
   script:
     - phpdbg -qrr vendor/bin/phpunit --debug -vvv --bootstrap vendor/autoload.php --coverage-text --colors=never --whitelist src/ tests
   stage: test
-  allow_failure: true
 
 test:php7.2:
   image: php:7.2
