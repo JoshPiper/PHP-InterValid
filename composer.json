@@ -9,6 +9,7 @@
 	},
 	"require-dev": {
 		"php": "^7.1",
-		"phpunit/phpunit": "8"
+		"phpunit/phpunit": "8",
+		"phpdocumentor/phpdocumentor": "2.*"
 	}
 }
