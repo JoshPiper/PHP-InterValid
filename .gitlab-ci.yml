@@ -1,0 +1,40 @@
+image: php:5.6
+cache:
+  paths:
+    - vendor/
+
+before_script:
+  - apt-get update -yqq
+  - apt-get install git -yqq
+  - curl -sS https://getcomposer.org/installer | php
+  - php composer.phar install
+
+.test: &test
+  script:
+    - phpunit --bootstrap vendor/autoload.php
+  stage: test
+  allow_failure: true
+
+test:php5.6:
+  image: php:5.6
+  <<: *test
+
+test:php7.0:
+  image: php:7.0
+  <<: *test
+
+test:php7.1:
+  image: php:7.1
+  <<: *test
+
+test:php7.2:
+  image: php:7.2
+  <<: *test
+
+test:php7.3:
+  image: php:7.3
+  <<: *test
+
+test:php7.4:
+  image: php:7.4
+  <<: *test
