@@ -11,7 +11,7 @@ before_script:
 
 .test: &test
   script:
-    - vendor/bin/phpunit --bootstrap vendor/autoload.php tests/
+    - phpdbg vendor/bin/phpunit --bootstrap vendor/autoload.php --coverage-html coverage/ tests/
   stage: test
   allow_failure: true
 
