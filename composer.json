@@ -1,0 +1,11 @@
+{
+	"name": "Internet/InterValid",
+	"require": {
+
+	},
+	"autoload": {
+		"psr-4": {
+			"Internet\\InterValid\\": "src/"
+		}
+	}
+}
