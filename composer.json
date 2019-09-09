@@ -1,5 +1,5 @@
 {
-	"name": "Internet/InterValid",
+	"name": "internet/intervalid",
 	"description": "A small library for handling input validation.",
 	"require": {},
 	"autoload": {
