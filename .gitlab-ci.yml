@@ -22,7 +22,3 @@ test:php7.2:
 test:php7.3:
   image: php:7.3
   <<: *test
-
-test:php7.4:
-  image: php:7.4
-  <<: *test
