@@ -1,8 +1,7 @@
 {
 	"name": "Internet/InterValid",
-	"require": {
-
-	},
+	"description": "A small library for handling input validation.",
+	"require": {},
 	"autoload": {
 		"psr-4": {
 			"Internet\\InterValid\\": "src/"
