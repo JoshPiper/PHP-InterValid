@@ -2,6 +2,7 @@ image: php:5.6
 cache:
   paths:
     - vendor/
+    - composer.phar
 
 variables:
   COMPOSER_ALLOW_SUPERUSER: 1
