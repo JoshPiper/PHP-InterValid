@@ -3,6 +3,9 @@ cache:
   paths:
     - vendor/
 
+variables:
+  COMPOSER_ALLOW_SUPERUSER: 1
+
 before_script:
   - apt-get update -yqq
   - apt-get install git -yqq
