@@ -7,8 +7,9 @@ variables:
   COMPOSER_ALLOW_SUPERUSER: 1
 
 before_script:
-  - apt-get update -yqq && apt-get install composer -yqq
-  - composer install
+  - apt-get update -yqq && apt-get install git -yqq
+  - curl -sS https://getcomposer.org/installer | php
+  - php composer.phar install
 
 .test: &test
   script:
