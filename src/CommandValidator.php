@@ -46,7 +46,10 @@ class CommandValidator extends ListValidator {
 			$opts['min_range'] = $min;
 		}
 
-		return filter_var($this->option($long, $short), FILTER_VALIDATE_INT, ['options' => $opts]);
+		$var = $this->option($long, $short);
+		if ($var === true){return 1;}
+
+		return filter_var($var, FILTER_VALIDATE_INT, ['options' => $opts]);
 	}
 
 	/** Fetch a boolean from the command option store.
