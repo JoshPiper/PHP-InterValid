@@ -78,5 +78,7 @@ final class CommandValidatorTest extends TestCase {
 
 	public function testBooleanOptions(): void{
 		$this->assertEquals(true, $this->validator->boolOption("quiet"));
+		$this->assertEquals(false, $this->validator->boolOption("quiet", false));
+		$this->assertEquals(true, $this->validator->boolOption("q", false));
 	}
 }
