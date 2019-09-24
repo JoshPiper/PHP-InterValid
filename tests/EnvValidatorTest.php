@@ -25,7 +25,7 @@ final class EnvValidatorTest extends TestCase {
 
 	public function testCanBeCreated(): void{
 		$this->expectNotToPerformAssertions();
-		$validator = new EnvValidator();
+		new EnvValidator();
 	}
 
 	public function testHasReturnsTrueIfExists(): void{
