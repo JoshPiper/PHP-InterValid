@@ -74,6 +74,8 @@ final class CommandValidatorTest extends TestCase {
 
 		$this->assertEquals(0, $this->validator->intOption("fake", true, 0, 1, 10));
 		$this->assertEquals(0, $this->validator->intOption("verbose", true, 0, 5, 10));
+
+		$this->assertEquals(1, $this->validator->intOption("verbose", true, 1, 5, 10));
 	}
 
 	public function testBooleanOptions(): void{
