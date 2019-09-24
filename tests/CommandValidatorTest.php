@@ -64,12 +64,16 @@ final class CommandValidatorTest extends TestCase {
 		$this->assertEquals(true, $this->validator->option("verbose", "v"));
 		$this->assertEquals(true, $this->validator->option("verbose", false));
 		$this->assertEquals(3, $this->validator->option("v", "verbose"));
+		$this->assertEquals("this,is,stupid", $this->validator->option("csv", false));
 	}
 
 	public function testIntegerOptions(): void{
 		$this->assertEquals(1, $this->validator->intOption("verbose", "v"));
 		$this->assertEquals(1, $this->validator->intOption("verbose", false));
 		$this->assertEquals(3, $this->validator->intOption("v", "verbose"));
+
+		$this->assertEquals(0, $this->validator->intOption("fake", true, 0, 1, 10));
+		$this->assertEquals(0, $this->validator->intOption("verbose", true, 0, 5, 10));
 	}
 
 	public function testBooleanOptions(): void{
