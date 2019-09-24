@@ -64,6 +64,7 @@ final class CommandValidatorTest extends TestCase {
 		$this->assertEquals(true, $this->validator->option("verbose", "v"));
 		$this->assertEquals(true, $this->validator->option("verbose", false));
 		$this->assertEquals(3, $this->validator->option("v", "verbose"));
+		$this->assertEquals("this,is,stupid", $this->validator->option("csv", false));
 	}
 
 	public function testIntegerOptions(): void{
