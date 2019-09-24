@@ -24,7 +24,7 @@ final class CommandValidatorTest extends TestCase {
 
 	public function testCanBeCreated(): void{
 		$this->expectNotToPerformAssertions();
-		$validator = new CommandValidator($this->data);
+		new CommandValidator($this->data);
 	}
 
 	public function testHasReturnsTrueIfExists(): void{

@@ -24,7 +24,7 @@ final class ListValidatorTest extends TestCase {
 
 	public function testCanBeCreated(): void{
 		$this->expectNotToPerformAssertions();
-		$validator = new ListValidator();
+		new ListValidator();
 	}
 
 	public function testHasReturnsTrueIfExists(): void{
