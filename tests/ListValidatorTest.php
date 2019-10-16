@@ -40,7 +40,7 @@ final class ListValidatorTest extends TestCase {
 		$this->assertFalse($this->validator->int("MY_FLOAT"));
 
 		$this->assertEquals(20, $this->validator->int("MY_FLOAT", 20));
-		$this->assertFalse($this->validator->int("MY_INT", 0, 1, 10));
+		$this->assertEquals(10, $this->validator->int("MY_INT", 0, 1, 10));
 	}
 
 	public function testBoolReturnsBooleans(): void{
