@@ -1,4 +1,4 @@
-image: php:5.6
+image: php:7.2
 cache:
   paths:
     - vendor/
@@ -18,11 +18,9 @@ before_script:
       - coverage_report
   script:
     - phpdbg -qrr vendor/bin/phpunit --debug -vvv --bootstrap vendor/autoload.php --coverage-text --coverage-html coverage_report --colors=never --whitelist src/ tests
-    #- phpdbg -qrr vendor/bin/phpunit --debug -vvv --bootstrap vendor/autoload.php  --colors=never --whitelist src/ tests
   stage: test
 
 test:php7.2:
-  image: php:7.2
   <<: *test
 
 test:php7.3:
