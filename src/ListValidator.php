@@ -20,14 +20,11 @@ class ListValidator implements Validator {
 
 	/** {@inheritDoc} */
 	public function int($name, $def = false, $min = false, $max = false){
-		if (!$this->has($name)){return null;}
+		if (!$this->has($name)){return $def ? $def : null;}
 
-		$opts = [];
-		if ($def){
-			$opts['default'] = $def;
-		}
-
+		if ($def){$opts['default'] = $def;}
 		$val = filter_var($this->raw($name), FILTER_VALIDATE_INT, ['options' => $opts]);
+
 		if ($max){$val = min($max, $val);}
 		if ($min){$val = max($min, $val);}
 
