@@ -20,22 +20,22 @@ class ListValidator implements Validator {
 
 	/** {@inheritDoc} */
 	public function int($name, $def = false, $min = false, $max = false){
-		$opts = [];
-		if ($def){
-			$opts['default'] = $def;
-		}
-		if ($max){
-			$opts['max_range'] = $max;
-		}
-		if ($min){
-			$opts['min_range'] = $min;
-		}
+		if (!$this->has($name)){return $def ? $def : null;}
 
-		return filter_var($this->raw($name), FILTER_VALIDATE_INT, ['options' => $opts]);
+		$opts = [];
+		if ($def){$opts['default'] = $def;}
+		$val = filter_var($this->raw($name), FILTER_VALIDATE_INT, ['options' => $opts]);
+
+		if ($max){$val = min($max, $val);}
+		if ($min){$val = max($min, $val);}
+
+		return $val;
 	}
 
 	/** {@inheritDoc} */
 	public function bool($name){
+		if (!$this->has($name)){return null;}
+
 		return filter_var($this->raw($name), FILTER_VALIDATE_BOOLEAN);
 	}
 
@@ -46,12 +46,16 @@ class ListValidator implements Validator {
 
 	/** {@inheritDoc} */
 	public function commaList($name){
+		if (!$this->has($name)){return null;}
+
 		return array_filter(array_map("trim", explode(',', $this->raw($name) ?: '')));
 	}
 
 	/** {@inheritDoc} */
 	public function raw($name){
-		return @filter_var($this->data[$name], FILTER_UNSAFE_RAW);
+		if (!$this->has($name)){return null;}
+
+		return filter_var($this->data[$name], FILTER_UNSAFE_RAW);
 	}
 
 	/** {@inheritDoc} */

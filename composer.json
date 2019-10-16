@@ -10,5 +10,10 @@
 		"psr-4": {
 			"Internet\\InterValid\\": "src/"
 		}
+	},
+	"autoload-dev": {
+		"psr-4": {
+			"Internet\\InterValid\\Tests\\": "tests/"
+		}
 	}
 }

@@ -1,16 +1,22 @@
 <?php
 
 declare(strict_types=1);
+
+namespace Internet\InterValid\Tests;
+
 use PHPUnit\Framework\TestCase;
 use Internet\InterValid\ListValidator;
 
-final class ListValidatorTest extends TestCase {
-
-	public $data;
+class ListValidatorTest extends TestCase {
+	/** @var array */
+	public static $data;
 	/** @var ListValidator */
 	public $validator;
-	protected function setUp(): void{
-		$this->data = [
+	/** @var string Class under test. */
+	public static $class = 'Internet\\InterValid\\ListValidator';
+
+	static function setUpBeforeClass(): void{
+		static::$data = [
 			"MY_VAR" => "hello, world",
 			"MY_INT" => 12,
 			"MY_FLOAT" => 15.7,
@@ -18,13 +24,15 @@ final class ListValidatorTest extends TestCase {
 			"MY_BOOL_STR" => "yes",
 			"MY_LIST" => "a,b,c,d"
 		];
+	}
 
-		$this->validator = new ListValidator($this->data);
+	protected function setUp(): void{
+		$this->validator = new static::$class(static::$data);
 	}
 
 	public function testCanBeCreated(): void{
 		$this->expectNotToPerformAssertions();
-		new ListValidator();
+		new static::$class();
 	}
 
 	public function testHasReturnsTrueIfExists(): void{
@@ -40,7 +48,7 @@ final class ListValidatorTest extends TestCase {
 		$this->assertFalse($this->validator->int("MY_FLOAT"));
 
 		$this->assertEquals(20, $this->validator->int("MY_FLOAT", 20));
-		$this->assertFalse($this->validator->int("MY_INT", 0, 1, 10));
+		$this->assertEquals(10, $this->validator->int("MY_INT", 0, 1, 10));
 	}
 
 	public function testBoolReturnsBooleans(): void{
@@ -57,10 +65,15 @@ final class ListValidatorTest extends TestCase {
 	}
 
 	public function testData(): void{
-		$this->assertEquals($this->data, $this->validator->data());
+		$this->assertEquals(static::$data, $this->validator->data());
 	}
 
 	public function testBulkRaw(): void{
-		$this->assertEquals($this->data, $this->validator->bulk(FILTER_UNSAFE_RAW));
+		$this->assertEquals(static::$data, $this->validator->bulk(array_fill_keys(array_keys(static::$data), FILTER_UNSAFE_RAW)));
+		$this->assertEquals(static::$data, $this->validator->bulk(FILTER_UNSAFE_RAW));
+	}
+
+	public function testRawReturnsNothing(): void{
+		$this->assertNull($this->validator->raw('NON_EXISTANT'));
 	}
 }
