@@ -24,14 +24,12 @@ class ListValidator implements Validator {
 		if ($def){
 			$opts['default'] = $def;
 		}
-		if ($max){
-			$opts['max_range'] = $max;
-		}
-		if ($min){
-			$opts['min_range'] = $min;
-		}
 
-		return filter_var($this->raw($name), FILTER_VALIDATE_INT, ['options' => $opts]);
+		$val = filter_var($this->raw($name), FILTER_VALIDATE_INT, ['options' => $opts]);
+		if ($max){$val = min($max, $val);}
+		if ($min){$val = max($min, $val);}
+
+		return $val;
 	}
 
 	/** {@inheritDoc} */
