@@ -63,4 +63,8 @@ final class ListValidatorTest extends TestCase {
 	public function testBulkRaw(): void{
 		$this->assertEquals($this->data, $this->validator->bulk(FILTER_UNSAFE_RAW));
 	}
+
+	public function testRawReturnsNothing(): void{
+		$this->assertNull($this->validator->raw('NON_EXISTANT'));
+	}
 }
