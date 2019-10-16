@@ -1,16 +1,24 @@
 <?php
 
 declare(strict_types=1);
+
+namespace Internet\InterValid\Tests;
+
 use PHPUnit\Framework\TestCase;
+use Internet\InterValid\ListValidator;
 use Internet\InterValid\CommandValidator;
 
-final class CommandValidatorTest extends TestCase {
+final class CommandValidatorTest extends ListValidatorTest {
+	public static $class = 'Internet\\InterValid\\CommandValidator';
 
-	public $data;
-	/** @var CommandValidator */
-	public $validator;
-	protected function setUp(): void{
-		$this->data = [
+	static function setUpBeforeClass(): void{
+		static::$data = [
+			"MY_VAR" => "hello, world",
+			"MY_INT" => 12,
+			"MY_FLOAT" => 15.7,
+			"MY_BOOL" => false,
+			"MY_BOOL_STR" => "yes",
+			"MY_LIST" => "a,b,c,d",
 			"verbose" => true,
 			"v" => 3,
 			"q" => true,
@@ -18,46 +26,6 @@ final class CommandValidatorTest extends TestCase {
 			"bool" => "no",
 			"csv" => "this,is,stupid"
 		];
-
-		$this->validator = new CommandValidator($this->data);
-	}
-
-	public function testCanBeCreated(): void{
-		$this->expectNotToPerformAssertions();
-		new CommandValidator($this->data);
-	}
-
-	public function testHasReturnsTrueIfExists(): void{
-		$this->assertTrue($this->validator->has("verbose"));
-	}
-
-	public function testHasReturnsFalseIfNotExists(): void{
-		$this->assertFalse($this->validator->has("bad"));
-	}
-
-	public function testIntReturnsIntegers(): void{
-		$this->assertEquals(3, $this->validator->int("v"));
-		$this->assertFalse($this->validator->int("bad"));
-
-		$this->assertEquals(20, $this->validator->int("verb", 20));
-		$this->assertFalse($this->validator->int("bad", 0, 1, 10));
-	}
-
-	public function testBoolReturnsBooleans(): void{
-		$this->assertFalse($this->validator->bool("bool"));
-		$this->assertTrue($this->validator->bool("verbose"));
-	}
-
-	public function testBoolCSVList(): void{
-		$this->assertEquals(['this', 'is', 'stupid'], $this->validator->commaList("csv"));
-	}
-
-	public function testRaw(): void{
-		$this->assertEquals("this,is,stupid", $this->validator->raw("csv"));
-	}
-
-	public function testData(): void{
-		$this->assertEquals($this->data, $this->validator->data());
 	}
 
 	public function testOptions(): void{
