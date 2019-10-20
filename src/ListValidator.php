@@ -20,7 +20,7 @@ class ListValidator implements Validator {
 
 	/** {@inheritDoc} */
 	public function int($name, $def = false, $min = false, $max = false){
-		if (!$this->has($name)){return $def ? $def : null;}
+		if (!$this->has($name)){return $def !== false ? $def : null;}
 
 		$opts = [];
 		if ($def !== false){$opts['default'] = $def;}
