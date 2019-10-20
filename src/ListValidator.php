@@ -23,11 +23,11 @@ class ListValidator implements Validator {
 		if (!$this->has($name)){return $def ? $def : null;}
 
 		$opts = [];
-		if ($def){$opts['default'] = $def;}
+		if ($def !== false){$opts['default'] = $def;}
 		$val = filter_var($this->raw($name), FILTER_VALIDATE_INT, ['options' => $opts]);
 
-		if ($max){$val = min($max, $val);}
-		if ($min){$val = max($min, $val);}
+		if ($max !== false){$val = min($max, $val);}
+		if ($min !== false){$val = max($min, $val);}
 
 		return $val;
 	}
