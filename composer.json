@@ -10,13 +10,13 @@
 		}
 	},
 
+	"require-dev": {
+		"php": "^7.2",
+		"phpunit/phpunit": "8"
+	},
 	"autoload-dev": {
 		"psr-4": {
 			"Internet\\InterValid\\Tests\\": "tests/"
 		}
-	},
-	"require-dev": {
-		"php": "^7.2",
-		"phpunit/phpunit": "8"
 	}
 }
