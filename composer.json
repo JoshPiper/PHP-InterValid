@@ -1,6 +1,8 @@
 {
 	"name": "internet/intervalid",
 	"description": "A small library for handling input validation.",
+	"license": "MIT",
+
 	"require": {},
 	"require-dev": {
 		"php": "^7.2",
