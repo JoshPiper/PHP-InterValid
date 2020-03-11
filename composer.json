@@ -2,6 +2,18 @@
 	"name": "internet/intervalid",
 	"description": "A small library for handling input validation.",
 	"license": "MIT",
+	"authors": [{
+		"name": "Joshua Piper",
+		"homepage": "https://doctor-internet.dev",
+		"role": "Developer"
+	}],
+
+	"scripts": {
+		"test": "phpunit"
+	},
+	"scripts-descriptions": {
+		"test": "Run the standard suite of unit tests."
+	},
 
 	"require": {},
 	"autoload": {
