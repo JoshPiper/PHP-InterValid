@@ -9,10 +9,11 @@
 	}],
 
 	"scripts": {
-		"test": "phpunit"
-	},
-	"scripts-descriptions": {
-		"test": "Run the standard suite of unit tests."
+		"test": "phpunit --bootstrap vendor/autoload.php --colors=never --whitelist src/ --testdox-html test.html --coverage-clover=coverage.xml tests",
+		"pcov-polyfill": [
+			"@composer require --dev pcov/clobber",
+			"pcov clobber"
+		]
 	},
 
 	"require": {},
@@ -23,8 +24,7 @@
 	},
 
 	"require-dev": {
-		"php": "^7.2",
-		"phpunit/phpunit": "8"
+		"phpunit/phpunit": ">=7 <10"
 	},
 	"autoload-dev": {
 		"psr-4": {
