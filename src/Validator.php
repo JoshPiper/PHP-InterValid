@@ -4,7 +4,7 @@ namespace Internet\InterValid;
 
 /**
  * Interface Validator The validator interface is used for fetching variables from mixed (poss. unsafe) sources.
- * @package Bolt\Validation
+ * @package Internet\InterValid
  */
 interface Validator {
 	/** Check if the validator contains a given key.

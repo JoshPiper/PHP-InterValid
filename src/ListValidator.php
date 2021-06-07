@@ -2,6 +2,10 @@
 
 namespace Internet\InterValid;
 
+/**
+ * The List Validator class simply pulls data from an a given associative array.
+ * @package Internet\InterValid
+ */
 class ListValidator implements Validator {
 	private $data = [];
 

@@ -2,6 +2,11 @@
 
 namespace Internet\InterValid;
 
+/**
+ * The Command Validator class is an extension of the List Validator.
+ * This class has additional utility functions for CLI interfaces, such as fetching long / short options (--verbose / -v)
+ * @package Internet\InterValid
+ */
 class CommandValidator extends ListValidator {
 	/** Fetch a command option from the internal data store.
 	 * @param string $long The option long name.
